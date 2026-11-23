@@ -24,7 +24,7 @@ Agent ── MCP (stdio) ──> resolve-mcp (Python ≥ 3.11) ── fusionscri
 3. Check the connection (Resolve open):
 
    ```bash
-   uvx --from git+https://github.com/hramirezedc/resolve-mcp resolve-mcp status
+   uvx --from git+https://github.com/toolbox-design-ia/resolve-mcp resolve-mcp status
    ```
 
 4. Register the server with your agent. Desktop apps don't always inherit your shell `PATH`, so
@@ -37,7 +37,7 @@ Agent ── MCP (stdio) ──> resolve-mcp (Python ≥ 3.11) ── fusionscri
   "mcpServers": {
     "resolve": {
       "command": "/Users/YOU/.local/bin/uvx",
-      "args": ["--from", "git+https://github.com/hramirezedc/resolve-mcp", "resolve-mcp"]
+      "args": ["--from", "git+https://github.com/toolbox-design-ia/resolve-mcp", "resolve-mcp"]
     }
   }
 }
@@ -46,7 +46,7 @@ Agent ── MCP (stdio) ──> resolve-mcp (Python ≥ 3.11) ── fusionscri
 **Claude Code**
 
 ```bash
-claude mcp add resolve -- uvx --from git+https://github.com/hramirezedc/resolve-mcp resolve-mcp
+claude mcp add resolve -- uvx --from git+https://github.com/toolbox-design-ia/resolve-mcp resolve-mcp
 ```
 
 **OpenAI Codex CLI** (`~/.codex/config.toml`):
@@ -54,7 +54,7 @@ claude mcp add resolve -- uvx --from git+https://github.com/hramirezedc/resolve-
 ```toml
 [mcp_servers.resolve]
 command = "uvx"
-args = ["--from", "git+https://github.com/hramirezedc/resolve-mcp", "resolve-mcp"]
+args = ["--from", "git+https://github.com/toolbox-design-ia/resolve-mcp", "resolve-mcp"]
 ```
 
 Restart the app after editing its configuration. `resolve-mcp tools` lists every tool.

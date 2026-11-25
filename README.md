@@ -59,6 +59,19 @@ args = ["--from", "git+https://github.com/toolbox-design-ia/resolve-mcp", "resol
 
 Restart the app after editing its configuration. `resolve-mcp tools` lists every tool.
 
+**Over HTTP, for an agent platform on another machine** (Agents Factory, for example). Only with a
+token, which every request carries as `Authorization: Bearer <token>`; without it, 401. Listen on a
+private address (your tailnet's), never on all interfaces of a public network:
+
+```bash
+mkdir -p ~/.config/resolve-mcp && openssl rand -hex 32 > ~/.config/resolve-mcp/token && chmod 600 ~/.config/resolve-mcp/token
+resolve-mcp serve --http --host 100.x.y.z --port 8765   # the server is http://100.x.y.z:8765/mcp
+```
+
+The token can also come from `RESOLVE_MCP_TOKEN` or `--token-file`. Without one (or with fewer than
+32 characters, or in a file others can read) the server does not start. Run it as the user who runs
+Resolve: scripting only reaches the Resolve of the same session.
+
 Environment variables: `RESOLVE_SCRIPT_LIB` (path to fusionscript) and `RESOLVE_SCRIPT_API`
 (Resolve's Developer/Scripting folder), both auto-detected on macOS, Windows and Linux;
 `RESOLVE_HOST` (connect to a Resolve on another machine with network
